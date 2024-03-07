@@ -15,6 +15,10 @@ import os
 from dotenv import load_dotenv
 import tempfile
 
+def add_cors_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'
+    response.headers['Access-Control-Allow-Headers'] = 'Content-Type'
+    return response
 
 load_dotenv()
 
@@ -79,7 +83,7 @@ def main():
     load_dotenv()
     # Initialize session state
     initialize_session_state()
-    st.title("Hey, Get Info of your story :books:")
+    # st.title("Hey, Get Info of your story")
     # Initialize Streamlit
     st.sidebar.title("Document Processing")
     uploaded_files = st.sidebar.file_uploader("Upload files", accept_multiple_files=True)
