@@ -1,6 +1,6 @@
-import flask
 import streamlit as st
 from streamlit_chat import message
+from flask import Flask
 from langchain.chains import ConversationalRetrievalChain
 from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.llms import CTransformers
@@ -16,7 +16,7 @@ import os
 from dotenv import load_dotenv
 import tempfile
 
-app = flask(__name__)
+app = Flask(__name__)
 @app.after_request
 def add_cors_headers(response):
     response.headers['Access-Control-Allow-Origin'] = '*'
